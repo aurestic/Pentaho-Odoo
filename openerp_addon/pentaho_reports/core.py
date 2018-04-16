@@ -151,10 +151,10 @@ def get_proxy_args(instance, cr, uid, prpt_content, context_vars={}):
                       'report_parameters': dict([(param_name, param_formula(instance, cr, uid, context_vars)) for (param_name, param_formula) in RESERVED_PARAMS.iteritems() if param_formula(instance, cr, uid, context_vars)]),
                       }
 
-    postgresconfig_host = config_obj.get_param(cr, uid, 'pentaho.postgres.host', default='localhost')
-    postgresconfig_port = config_obj.get_param(cr, uid, 'pentaho.postgres.port', default='5432')
-    postgresconfig_login = config_obj.get_param(cr, uid, 'pentaho.postgres.login')
-    postgresconfig_password = config_obj.get_param(cr, uid, 'pentaho.postgres.password')
+    postgresconfig_host = config_obj.get_param(cr, uid, 'pentaho.postgres.host', default='').strip() or config['db_host'] or 'localhost'
+    postgresconfig_port = config_obj.get_param(cr, uid, 'pentaho.postgres.port', default='').strip() or str(config['db_port']) or '5432'
+    postgresconfig_login = config_obj.get_param(cr, uid, 'pentaho.postgres.login', default='').strip() or config['db_user'] or ''
+    postgresconfig_password = config_obj.get_param(cr, uid, 'pentaho.postgres.password', default='').strip() or config['db_password'] or ''
 
     if postgresconfig_host and postgresconfig_port and postgresconfig_login and postgresconfig_password:
         proxy_argument['connection_settings'].update({'postgres': {'host': postgresconfig_host,
