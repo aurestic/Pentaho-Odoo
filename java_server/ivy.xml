@@ -50,6 +50,7 @@
     <!-- Odoo Plugin Dependencies -->
     <dependency org="pentaho-reporting-engine" name="pentaho-reporting-engine-classic-extensions-openerp" 
                 rev="${pentaho-reporting.version}" transitive="true" changing="true"/>
+    <dependency org="com.debortoliwines.openerp" name="openerp-java-api" rev="1.3.0"/>
     
     <dependency org="javax.servlet"      name="servlet-api"   rev="2.5"            transitive="false" />
     <dependency org="org.apache.xmlrpc"  name="xmlrpc-server" rev="3.1.3"          transitive="false" />
